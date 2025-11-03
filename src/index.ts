@@ -35,6 +35,23 @@ const server = serve({
     // Serve index.html for all unmatched routes.
     "/*": index,
 
+    "/health": {
+      GET: (req) => {
+        // health doesn't need authentication but is rate limited
+        const securityError = applySecurityMiddleware(
+          req,
+          requireHTTPS,
+          requireRateLimit
+        );
+        if (securityError) return addSecurityHeaders(securityError);
+
+        const response = new Response(JSON.stringify({ status: "ok" }), {
+          headers: { "Content-Type": "application/json" },
+        });
+        return addSecurityHeaders(response);
+      },
+    },
+
        // Get all jobs (protected with auth)
     "/api/jobs": {
       GET: (req) => {

@@ -2,7 +2,9 @@
 
 A modern, extensible, and type-safe cron job manager built with [Bun](https://bun.sh) and [Croner](https://github.com/hexagon/croner). Deploy your scheduled tasks in minutes with a password protected web dashboard for simple monitoring.
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/bun-cron-manager)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/wvIRLL?referralCode=4aYc_g&utm_medium=integration&utm_source=template&utm_campaign=generic)
+
+Railway is a singular platform to deploy your infrastructure stack. Railway will host your infrastructure so you don't have to deal with configuration, while allowing you to vertically and horizontally scale it. By deploying Bun Cron Manager on Railway, you are one step closer to supporting a complete full-stack application with minimal burden. Host your servers, databases, AI agents, and more on [Railway](https://railway.com/deploy/wvIRLL?referralCode=4aYc_g&utm_medium=integration&utm_source=template&utm_campaign=generic).
 
 ## ✨ Features
 

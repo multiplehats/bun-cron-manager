@@ -316,9 +316,12 @@ export function requireHTTPS(req: Request): Response | null {
 
   // Check if request is over HTTPS
   const url = new URL(req.url);
-  const protocol = req.headers.get("x-forwarded-proto") || url.protocol;
+  const forwardedProto = req.headers.get("x-forwarded-proto");
 
-  if (protocol !== "https:") {
+  // x-forwarded-proto returns "https" (no colon), url.protocol returns "https:" (with colon)
+  const isSecure = forwardedProto === "https" || url.protocol === "https:";
+
+  if (!isSecure) {
     auditLogger.log(AuditEventType.HTTPS_REQUIRED, req);
     return new Response(
       JSON.stringify({

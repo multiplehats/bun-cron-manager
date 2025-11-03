@@ -37,14 +37,8 @@ const server = serve({
 
     "/health": {
       GET: (req) => {
-        // health doesn't need authentication but is rate limited
-        const securityError = applySecurityMiddleware(
-          req,
-          requireHTTPS,
-          requireRateLimit
-        );
-        if (securityError) return addSecurityHeaders(securityError);
-
+        // Health endpoint should not require HTTPS (for internal healthchecks)
+        // and should not be rate limited (frequent checks)
         const response = new Response(JSON.stringify({ status: "ok" }), {
           headers: { "Content-Type": "application/json" },
         });
